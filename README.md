@@ -11,8 +11,8 @@
 
 Clone this repository.
 
-git clone 
-cd
+git clone https://github.com/kalra-4/vagrant-kafkaCluster-Ansible.git
+cd vagrant-kafkaCluster-Ansible
 
 
 ### Execute
