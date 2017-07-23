@@ -1,0 +1,1 @@
+UserParameter=kafka.consumerlag[*],/kafka/kafka_2.10-0.8.2.0/bin/kafka-consumer-offset-checker.sh --topic {{ zabbix_kafka_topic_name  }} --zookeeper  localhost:2181 --group {{ zabbix_kafka_group_name  }} | sed '/Pid/d' | awk '{print $$3":"$$6}' | grep "^$2:" | cut -d: -f2

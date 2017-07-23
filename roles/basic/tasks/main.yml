@@ -1,0 +1,27 @@
+---
+- name: change ulimit file
+  copy: src=limits.conf dest=/etc/security/limits.conf owner=root group=root mode=0644
+
+- name: disable selinux file
+  copy: src=selinux dest=/etc/sysconfig/selinux owner=root group=root mode=0644
+
+- name: install basic packages
+  package: name={{ item }} state=installed
+  with_items:
+    - "epel-release"
+    - "wget"
+    - "net-tools"
+    - "vim"
+    - "ntp"
+
+- name: create directory structure
+  file: path={{ item }} mode=0755 state=directory
+  with_items:
+    - "{{ log_dir }}"
+    - "{{ kafka_dir }}"
+    - "{{ kafka_log_dir }}"
+    - "{{ zk_log_dir }}"
+
+- name: set timezone to Asia/Kolkata
+  timezone:
+    name: Asia/Kolkata
