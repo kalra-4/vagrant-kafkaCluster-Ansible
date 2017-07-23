@@ -1,0 +1,14 @@
+- hosts: master
+  become: yes
+  roles:
+    - basic
+    - kafka
+    - zabbix
+
+- hosts: slave
+  become: yes
+  roles:
+    - basic
+    - kafka
+    - zabbix
+
